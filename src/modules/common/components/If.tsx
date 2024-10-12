@@ -1,8 +1,12 @@
 import React from 'react';
 
-type TIfProps = {
+type Props = {
   children: React.ReactNode;
   condition: boolean;
 };
 
-export const If = ({children, condition}: TIfProps) => condition && children;
+export const If = (props: Props) => {
+  const {children, condition} = props;
+
+  return condition ? children : null;
+};

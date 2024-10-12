@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const getIsProd = require('./get-is-prod');
+const {parsed} = require('dotenv').config();
 
 const customInterpolateName = (url) => {
   return url.toLowerCase();
@@ -8,6 +9,7 @@ const customInterpolateName = (url) => {
 const getPlugins = (options) => {
   const result = [
     new webpack.DefinePlugin({
+      ...parsed,
       'process.env': {NODE_ENV: JSON.stringify(options.mode)},
     }),
     new webpack.IgnorePlugin({

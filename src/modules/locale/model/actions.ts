@@ -1,8 +1,7 @@
-import {useAppDispatch, useAppSelector} from 'app/lib/hooks';
+import {useAppDispatch} from 'app/lib/hooks';
 import {api} from 'modules/common/lib/api';
-import {currentLocaleKey, defaultLocale} from 'modules/locale/model/constants';
+import {localeCurrentKey} from 'modules/locale/model/constants';
 import {localeActions} from 'modules/locale/model/reducers';
-import {selectLocaleCurrent} from 'modules/locale/model/selectors';
 import {TLocale} from 'modules/locale/model/types';
 import {useStatusSet} from 'modules/status/model/actions';
 import {Status} from 'modules/status/model/types';
@@ -32,19 +31,11 @@ export const useLocaleSetCurrent = () => {
 
   return useCallback(
     (currentLocale: string) => {
-      localStorage.setItem(currentLocaleKey, currentLocale);
+      localStorage.setItem(localeCurrentKey, currentLocale);
 
       return dispatch(localeActions.setCurrent(currentLocale));
     },
     [dispatch]
-  );
-};
-
-export const useLocaleCurrent = () => {
-  const localeCurrent = useAppSelector(selectLocaleCurrent);
-
-  return (
-    localeCurrent ?? localStorage.getItem(currentLocaleKey) ?? defaultLocale
   );
 };
 

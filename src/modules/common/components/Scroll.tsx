@@ -1,16 +1,16 @@
 import baron from 'baron';
 import {debounce} from 'modules/common/lib/debounce';
-import React, {ReactNode, RefObject} from 'react';
+import React, {Component, createRef, ReactNode} from 'react';
 import './Scroll.less';
 
-type TProps = {
+type TScrollProps = {
   children: ReactNode;
   dirList: TDirection[];
 };
 
 type TDirection = 'h' | 'v';
 
-const getScrollbarWidth = () => {
+function getScrollbarWidth() {
   const outer = document.createElement('div');
   outer.style.visibility = 'hidden';
   outer.style.overflow = 'scroll';
@@ -27,58 +27,55 @@ const getScrollbarWidth = () => {
   }
 
   return scrollbarWidth;
-};
+}
 
 const scrollbarWidth = getScrollbarWidth();
 
 const needCustomScrollbar = 0 !== scrollbarWidth;
 
-const getBarKey = (dir: TDirection) => {
+function getBarKey(dir) {
   return `bar_${dir}`;
-};
+}
 
-const getTrackKey = (dir: TDirection) => {
+function getTrackKey(dir) {
   return `track_${dir}`;
-};
+}
 
-const scrollUpdate = (scroll: baron) => {
-  scroll.update();
-};
-
-const scrollDispose = (scroll: baron) => {
-  scroll.dispose();
-};
-
-export class Scroll extends React.Component<TProps, unknown> {
+export class Scroll extends Component<TScrollProps, unknown> {
   instanceList: baron[] = [];
   isMount = false;
-  rfs: Record<string, RefObject<HTMLDivElement>> = {
-    scroll: React.createRef<HTMLDivElement>(),
-    scroller: React.createRef<HTMLDivElement>(),
+  references = {
+    scroll: createRef<HTMLDivElement>(),
+    scroller: createRef<HTMLDivElement>(),
   };
   updateOnLayoutChange = debounce(() => {
     if (this.isMount) {
-      this.instanceList.forEach(scrollUpdate);
+      this.instanceList.forEach(this.update);
     }
   }, 300);
 
-  constructor(props: TProps) {
+  constructor(props: TScrollProps) {
     super(props);
-    this.rfs = this.props.dirList.reduce(this.rfsInit, this.rfs);
+    this.references = this.props.dirList.reduce(
+      this.referencesInit,
+      this.references
+    );
   }
 
-  rfsInit = (acc, dir: TDirection) => {
-    return {
-      ...acc,
-      [getBarKey(dir)]: React.createRef<HTMLDivElement>(),
-      [getTrackKey(dir)]: React.createRef<HTMLDivElement>(),
-    };
-  };
+  referencesInit = (acc, dir) => ({
+    ...acc,
+    [getBarKey(dir)]: createRef<HTMLDivElement>(),
+    [getTrackKey(dir)]: createRef<HTMLDivElement>(),
+  });
 
   render() {
+    if (!needCustomScrollbar) {
+      return this.props.children;
+    }
+
     return (
-      <div className="Scroll" ref={this.rfs.scroll}>
-        <div className="Scroll__Scroller" ref={this.rfs.scroller}>
+      <div className="Scroll" ref={this.references.scroll}>
+        <div className="Scroll__Scroller" ref={this.references.scroller}>
           {this.props.children}
         </div>
         {this.props.dirList.map(this.renderScrollbar)}
@@ -86,20 +83,18 @@ export class Scroll extends React.Component<TProps, unknown> {
     );
   }
 
-  renderScrollbar = (dir) => {
-    return (
+  renderScrollbar = (dir) => (
+    <div
+      className={`Scroll__Track Scroll__Track_${dir}`}
+      key={dir}
+      ref={this.references[getTrackKey(dir)]}
+    >
       <div
-        className={`Scroll__Track Scroll__Track_${dir}`}
-        key={dir}
-        ref={this.rfs[getTrackKey(dir)]}
-      >
-        <div
-          className={`Scroll__Bar Scroll__Bar_${dir}`}
-          ref={this.rfs[getBarKey(dir)]}
-        />
-      </div>
-    );
-  };
+        className={`Scroll__Bar Scroll__Bar_${dir}`}
+        ref={this.references[getBarKey(dir)]}
+      />
+    </div>
+  );
 
   componentDidMount() {
     if (needCustomScrollbar) {
@@ -109,24 +104,31 @@ export class Scroll extends React.Component<TProps, unknown> {
     }
   }
 
-  scrollInit = (dir: TDirection) => {
-    return baron({
-      bar: this.rfs[getBarKey(dir)].current,
+  scrollInit = (dir) =>
+    baron({
+      bar: this.references[getBarKey(dir)].current,
       barOnCls: `Scroll_On_${dir}`,
       direction: dir,
       impact: 'scroller',
-      root: this.rfs.scroll.current,
-      scroller: this.rfs.scroller.current,
-      track: this.rfs[getTrackKey(dir)].current,
+      root: this.references.scroll.current,
+      scroller: this.references.scroller.current,
+      track: this.references[getTrackKey(dir)].current,
     });
-  };
 
   componentDidUpdate() {
     this.updateOnLayoutChange();
   }
 
+  update(scroll) {
+    scroll.update();
+  }
+
   componentWillUnmount() {
     this.isMount = false;
-    this.instanceList.forEach(scrollDispose);
+    this.instanceList.forEach(this.dispose);
+  }
+
+  dispose(scroll) {
+    scroll.dispose();
   }
 }

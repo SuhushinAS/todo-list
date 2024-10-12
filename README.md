@@ -1,4 +1,4 @@
-#ReactStarterKit
+# Список дел
 
 ## Как использовать
 
@@ -54,3 +54,62 @@ npm run build
 * `types` - типы;
 
 Структурируются по сущностям
+
+## Сценарии
+
+- Пользователь
+  - [ ] Редактировать персоняльные данные
+- Наблюдатель
+  - [ ] Посмотреть список дел в бэклоге
+  - [ ] Посмотреть спсиок дел в работе
+  - [ ] Посмотреть список выполненных дел
+- Админ
+  - [ ] Наблюдатель
+  - [ ] Менят статус дел
+  - [ ] Создавать/редактировать/удалять дела
+
+## Модель данных
+
+- todo
+  - createdAt: Date
+  - createdBy: string
+  - id: string
+  - priority: Low/High
+  - status: Todo/Active/Done
+  - title: string
+  - updatedAt: Date
+  - updatedBy: string
+- todoList
+  - createdAt: Date
+  - createdBy: string
+  - id: string
+  - title: string
+  - updatedAt: Date
+  - updatedBy: string
+- user
+  - id: string
+  - name: string
+- permission
+  - id: string
+  - name: string
+- role
+  - id: string
+  - name: string
+  - permissionIds: string[]
+- todoListUserMap
+  - roleId: string
+  - userId: string
+  - todoListId: string
+
+## Права
+
+- Todo
+  - Create
+  - Read
+  - Update
+  - Delete
+- TodoList
+  - Create
+  - Read
+  - Update
+  - Delete

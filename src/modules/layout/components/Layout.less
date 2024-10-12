@@ -1,44 +1,29 @@
 @import (reference) 'src/styles/mixins';
 
 .Layout {
-  background-color: @c-gray-10;
   display: flex;
   flex-direction: column;
   height: 100%;
   overflow: hidden;
   position: fixed;
+  transition: background-color @animation;
   width: 100%;
 
-  &__Header {
-    .fluid-prop-md(height, 55px, 80px);
-
-    bottom: 0;
-    flex-shrink: 0;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 100%;
-    z-index: 10;
+  .theme_light & {
+    background-color: @c-white;
   }
 
-  &__HeaderSize {
-    .fluid-prop-md(height, 55px, 80px);
+  .theme_dark & {
+    background-color: @c-black;
+  }
 
+  &__Header {
     flex-shrink: 0;
-
-    &_Transparent {
-      height: 0;
-    }
   }
 
   &__Scroll {
     flex: 1 0 0;
-    overflow: hidden;
-
-    & > .Scroll > .Scroll__Track {
-      .fluid-prop-md(top, 60px, 85px);
-    }
+    overflow: auto;
   }
 
   &__Inner {
@@ -55,7 +40,7 @@
   }
 
   &__Footer {
-    background-color: @c-secondary-30;
+    background-color: @c-primary-20;
     flex-shrink: 0;
   }
 }

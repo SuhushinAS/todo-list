@@ -2,6 +2,7 @@ import {configName, configReducer} from 'modules/config/model/reducers';
 import {exampleName, exampleReducer} from 'modules/example/model/reducers';
 import {localeName, localeReducer} from 'modules/locale/model/reducers';
 import {statusName, statusReducer} from 'modules/status/model/reducers';
+import {themeName, themeReducer} from 'modules/theme/model/reducers';
 import {combineReducers} from 'redux';
 
 export const rootReducer = combineReducers({
@@ -9,4 +10,5 @@ export const rootReducer = combineReducers({
   [exampleName]: exampleReducer,
   [localeName]: localeReducer,
   [statusName]: statusReducer,
+  [themeName]: themeReducer,
 });

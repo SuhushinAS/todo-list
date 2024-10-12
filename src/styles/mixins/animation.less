@@ -1,6 +1,11 @@
+@animation-duration-100: 100ms;
+@animation-duration-200: 200ms;
 @animation-duration: 300ms;
 @animation-duration-x2: 600ms;
 @animation-duration-x3: 900ms;
+
+@animation-100: @animation-duration-100 ease;
+@animation-200: @animation-duration-200 ease;
 
 @animation: @animation-duration ease;
 @animation-in: @animation-duration ease-in;
@@ -13,6 +18,8 @@
 @animation-x3: @animation-duration-x3 ease;
 @animation-in-x3: @animation-duration-x3 ease-in;
 @animation-out-x3: @animation-duration-x3 ease-out;
+
+@animation-hover: @animation-duration-200 ease @animation-duration-100;
 
 @keyframes spin {
   100% {

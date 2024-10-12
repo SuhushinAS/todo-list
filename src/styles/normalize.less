@@ -27,7 +27,15 @@ body {
   .font-family-primary();
   .f_p();
 
-  color: @c-primary-90;
+  transition: color @animation;
+
+  &.theme_light {
+    color: @c-black-50;
+  }
+
+  &.theme_dark {
+    color: @c-white-40;
+  }
 }
 
 h1,
@@ -58,14 +66,6 @@ h4 {
   .f_h4();
 }
 
-h5 {
-  .f_h5();
-}
-
-h6 {
-  .f_h6();
-}
-
 li,
 p {
   .f_p();
@@ -78,12 +78,14 @@ img {
   max-width: 100%;
 }
 
-label {
+label,
+select {
+  .f_p();
   display: block;
   margin: 0;
 }
 
-input,
+input[type="text"],
 textarea {
   .prop(-webkit-appearance, none);
 
