@@ -5,5 +5,7 @@ import {useMemo} from 'react';
 export const useDocRef = (path: string, pathSegment: string) => {
   const firestore = useFirestoreContext();
 
-  return useMemo(() => doc(firestore, path, pathSegment), [firestore, path, pathSegment]);
+  return useMemo(() => {
+    return doc(firestore, path, pathSegment);
+  }, [firestore, path, pathSegment]);
 };

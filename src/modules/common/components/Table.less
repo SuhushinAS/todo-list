@@ -1,0 +1,35 @@
+@import (reference) 'src/styles/font';
+@import (reference) 'src/styles/mixins';
+
+.Table {
+  border-collapse: separate;
+  border-spacing: 2px;
+  table-layout: fixed;
+  width: 100%;
+
+  &__Cell {
+    overflow: hidden;
+    padding: 0;
+    transition: background-color @animation;
+
+    .theme_light & {
+      background-color: @c-gray-20;
+    }
+
+    .theme_dark & {
+      background-color: @c-gray-100;
+    }
+
+    &_Title {
+      width: 100%;
+    }
+
+    &_Control {
+      text-align: center;
+    }
+
+    &_Control_Fixed {
+      .fluid-prop-sm(width, 32px, 44px);
+    }
+  }
+}

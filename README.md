@@ -79,7 +79,7 @@ npm run build
   - title: string
   - updatedAt: Date
   - updatedBy: string
-- todoList
+- board
   - createdAt: Date
   - createdBy: string
   - id: string
@@ -96,10 +96,10 @@ npm run build
   - id: string
   - name: string
   - permissionIds: string[]
-- todoListUserMap
+- boardUserMap
   - roleId: string
   - userId: string
-  - todoListId: string
+  - boardId: string
 
 ## Права
 
@@ -108,7 +108,7 @@ npm run build
   - Read
   - Update
   - Delete
-- TodoList
+- Board
   - Create
   - Read
   - Update

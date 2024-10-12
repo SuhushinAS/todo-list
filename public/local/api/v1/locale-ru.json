@@ -1,8 +1,14 @@
 {
+  "app.title": "Дела",
   "example.item.description": "Описание примера элемента",
   "example.list.description": "Описание примера списка",
   "example.list.title": "Пример списка",
   "footer.power.title": "Сделано в",
+  "form.create": "Создать",
+  "form.save": "Сохранить",
   "home.description": "Описание главной",
-  "home.title": "Главная"
+  "home.title": "Главная",
+  "user.name": "Ваше имя",
+  "user.status.offline": "Не в сети",
+  "user.status.online": "В сети"
 }

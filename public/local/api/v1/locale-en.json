@@ -1,8 +1,14 @@
 {
+  "app.title": "ToDos",
   "example.item.description": "Example item description",
   "example.list.description": "Example list description",
   "example.list.title": "Example list",
   "footer.power.title": "Powered by",
+  "form.create": "Create",
+  "form.save": "Save",
   "home.description": "Home description",
-  "home.title": "Home"
+  "home.title": "Home",
+  "user.name": "Your name",
+  "user.status.offline": "Offline",
+  "user.status.online": "Online"
 }

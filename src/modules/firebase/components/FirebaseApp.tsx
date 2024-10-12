@@ -1,6 +1,12 @@
 import {deleteApp, FirebaseApp, initializeApp} from 'firebase/app';
 import {config} from 'modules/firebase/model/constants';
-import React, {createContext, ReactNode, useContext, useEffect, useState} from 'react';
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 
 type Props = {
   children: ReactNode;
@@ -29,14 +35,20 @@ export const FirebaseAppProvider = (props: Props) => {
     return null;
   }
 
-  return <FirebaseAppContext.Provider value={app}>{children}</FirebaseAppContext.Provider>;
+  return (
+    <FirebaseAppContext.Provider value={app}>
+      {children}
+    </FirebaseAppContext.Provider>
+  );
 };
 
 export const useFirebaseAppContext = () => {
   const firebaseApp = useContext(FirebaseAppContext);
 
   if (firebaseApp === undefined) {
-    throw new Error('useFirebaseAppContext can only be used in a FirebaseAppProvider');
+    throw new Error(
+      'useFirebaseAppContext can only be used in a FirebaseAppProvider'
+    );
   }
 
   return firebaseApp;

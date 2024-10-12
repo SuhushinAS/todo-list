@@ -9,8 +9,10 @@ const customInterpolateName = (url) => {
 const getPlugins = (options) => {
   const result = [
     new webpack.DefinePlugin({
-      ...parsed,
-      'process.env': {NODE_ENV: JSON.stringify(options.mode)},
+      'process.env': JSON.stringify({
+        ...parsed,
+        NODE_ENV: options.mode,
+      }),
     }),
     new webpack.IgnorePlugin({
       contextRegExp: /moment$/u,
