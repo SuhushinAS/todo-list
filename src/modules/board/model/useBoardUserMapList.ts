@@ -1,7 +1,7 @@
 import {onSnapshot, where} from 'firebase/firestore';
 import {TBoardUserMap} from 'modules/board/lib/types';
-import {useCollectionRef} from 'modules/firebase/lib/useCollectionRef';
-import {useQueryConstraint} from 'modules/firebase/lib/useQueryConstraint';
+import {useCollectionRef} from 'modules/firebase/model/useCollectionRef';
+import {useQueryConstraint} from 'modules/firebase/model/useQueryConstraint';
 import {useEffect, useMemo, useState} from 'react';
 
 export const useBoardUserMapList = (userId: string) => {

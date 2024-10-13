@@ -1,5 +1,5 @@
 import {FirebaseApp, initializeApp} from 'firebase/app';
-import {config} from 'modules/firebase/model/constants';
+import {config} from 'modules/firebase/lib/constants';
 import React, {
   createContext,
   ReactNode,

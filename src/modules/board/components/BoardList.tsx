@@ -1,10 +1,10 @@
 import {BoardListItem} from 'modules/board/components/BoardListItem';
-import {TBoard} from 'modules/board/lib/types';
+import {TBoard, WithId} from 'modules/board/lib/types';
 import {Table} from 'modules/common/components/Table';
 import React from 'react';
 
 type Props = {
-  boardList?: TBoard[];
+  boardList?: WithId<TBoard>[];
 };
 
 export const BoardList = ({boardList}: Props) => {

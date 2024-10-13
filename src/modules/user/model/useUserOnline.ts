@@ -1,7 +1,7 @@
 import {onDisconnect, set} from 'firebase/database';
 import {useAnonymouslyContext} from 'modules/firebase/components/Anonymously';
-import {useDbRef} from 'modules/firebase/lib/useDbRef';
-import {useOnDbValue} from 'modules/firebase/lib/useOnDbValue';
+import {useDbRef} from 'modules/firebase/model/useDbRef';
+import {useOnDbValue} from 'modules/firebase/model/useOnDbValue';
 
 export const useUserOnline = () => {
   const anonymously = useAnonymouslyContext();

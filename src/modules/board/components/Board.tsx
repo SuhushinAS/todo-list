@@ -21,7 +21,7 @@ export const Board = () => {
 
   return (
     <Routes>
-      <Route element={<BoardItem userId={user.id} />} path={boardPath.item} />
+      <Route element={<BoardItem />} path={boardPath.item} />
       <Route
         element={<Boards userId={user.id} />}
         path={`${boardPath.home}*`}

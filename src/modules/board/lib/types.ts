@@ -3,10 +3,13 @@ import {Timestamp} from 'firebase/firestore';
 export type TBoard = {
   createdAt: Timestamp;
   createdBy: string;
-  id: string;
   title: string;
   updatedAt: Timestamp;
   updatedBy: string;
+};
+
+export type WithId<T> = T & {
+  id: string;
 };
 
 export type TBoardUserMap = {

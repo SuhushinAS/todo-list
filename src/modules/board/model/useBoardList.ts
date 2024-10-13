@@ -1,3 +1,4 @@
+import {CollectionReference} from '@firebase/firestore';
 import {
   collection,
   documentId,
@@ -5,13 +6,15 @@ import {
   query,
   where,
 } from 'firebase/firestore';
-import {TBoard} from 'modules/board/lib/types';
+import {TBoard, WithId} from 'modules/board/lib/types';
 import {useBoardUserMapList} from 'modules/board/model/useBoardUserMapList';
 import {useFirestoreContext} from 'modules/firebase/components/Firestore';
+import {getData} from 'modules/firebase/lib/getData';
+import {hasData} from 'modules/firebase/lib/hasData';
 import {useEffect, useState} from 'react';
 
 export const useBoardList = (userId: string) => {
-  const [boardList, setBoardList] = useState<TBoard[]>();
+  const [boardList, setBoardList] = useState<WithId<TBoard>[]>();
   const boardUserMapList = useBoardUserMapList(userId);
   const firestore = useFirestoreContext();
 
@@ -20,20 +23,21 @@ export const useBoardList = (userId: string) => {
       return undefined;
     }
 
-    const boardCollectionRef = collection(firestore, 'board');
+    const boardCollectionRef = collection(
+      firestore,
+      'board'
+    ) as CollectionReference<TBoard, TBoard>;
     const boardIdList = boardUserMapList.map((boardUserMap) => {
       return boardUserMap.boardId;
     });
     const constraint = where(documentId(), 'in', boardIdList);
-    const queryConstraint = query(boardCollectionRef, constraint);
+    const queryConstraint = query<TBoard, TBoard>(
+      boardCollectionRef,
+      constraint
+    );
 
-    return onSnapshot(queryConstraint, (snap) => {
-      const boardListNew = snap.docs.map((doc) => {
-        return {
-          ...doc.data(),
-          id: doc.id,
-        } as TBoard;
-      });
+    return onSnapshot<TBoard, TBoard>(queryConstraint, (snap) => {
+      const boardListNew = snap.docs.filter(hasData).map(getData);
 
       setBoardList(boardListNew);
     });

@@ -1,6 +1,6 @@
 import {setDoc} from 'firebase/firestore';
 import {useAnonymouslyContext} from 'modules/firebase/components/Anonymously';
-import {useDocRef} from 'modules/firebase/lib/useDocRef';
+import {useDocRef} from 'modules/firebase/model/useDocRef';
 import {Form} from 'modules/form/components/Form';
 import {AuthForm} from 'modules/user/components/AuthForm';
 import {TUser} from 'modules/user/types';
