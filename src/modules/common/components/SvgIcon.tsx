@@ -15,7 +15,7 @@ type TImport = {
 
 type TIcon = {
   symbol: string;
-  toString: any;
+  toString?: unknown;
   view: string;
   viewBox: string;
 };

@@ -1,7 +1,11 @@
+import {BoardItem} from 'modules/board/components/BoardItem';
+import {Boards} from 'modules/board/components/Boards';
+import {boardPath} from 'modules/board/lib/constants';
 import {Auth} from 'modules/user/components/Auth';
 import {useUserOnline} from 'modules/user/model/useUserOnline';
 import {useUserSelf} from 'modules/user/model/useUserSelf';
 import React from 'react';
+import {Route, Routes} from 'react-router-dom';
 
 export const Board = () => {
   const user = useUserSelf();
@@ -15,5 +19,13 @@ export const Board = () => {
     return <Auth />;
   }
 
-  return <div>Board</div>;
+  return (
+    <Routes>
+      <Route element={<BoardItem userId={user.id} />} path={boardPath.item} />
+      <Route
+        element={<Boards userId={user.id} />}
+        path={`${boardPath.home}*`}
+      />
+    </Routes>
+  );
 };

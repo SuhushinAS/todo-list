@@ -7,24 +7,24 @@ import {Layout} from 'modules/layout/components/Layout';
 import {LocaleProvider} from 'modules/locale/components/LocaleProvider';
 import React from 'react';
 import {Provider} from 'react-redux';
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {HashRouter, Route, Routes} from 'react-router-dom';
 
 export const App = () => {
   return (
     <React.StrictMode>
       <Provider store={store}>
         <LocaleProvider>
-          <BrowserRouter>
+          <HashRouter>
             <Config>
               <Layout>
                 <FirebaseProvider>
                   <Routes>
-                    <Route element={<Board />} path={appPath.home} />
+                    <Route element={<Board />} path={`${appPath.home}*`} />
                   </Routes>
                 </FirebaseProvider>
               </Layout>
             </Config>
-          </BrowserRouter>
+          </HashRouter>
         </LocaleProvider>
       </Provider>
     </React.StrictMode>

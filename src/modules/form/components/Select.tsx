@@ -13,19 +13,13 @@ type Props = SelectHTMLAttributes<HTMLSelectElement> & {
   options: Option[];
 };
 
-export const Select = (props: Props) => {
-  const {className, id, name, options, ...restProps} = props;
+export const Select = ({className, id, name, options, ...props}: Props) => {
   const {control} = useFormContext();
   const {field} = useController({control, name});
   const selectClassName = useClassName('Select', className);
 
   return (
-    <select
-      className={selectClassName}
-      id={id ?? name}
-      {...field}
-      {...restProps}
-    >
+    <select className={selectClassName} id={id ?? name} {...field} {...props}>
       {options.map((option) => {
         return (
           <option key={option.value} value={option.value}>

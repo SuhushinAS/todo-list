@@ -71,6 +71,7 @@ npm run build
 ## Модель данных
 
 - todo
+  - boardId: string
   - createdAt: Date
   - createdBy: string
   - id: string
@@ -97,9 +98,9 @@ npm run build
   - name: string
   - permissionIds: string[]
 - boardUserMap
+  - boardId: string
   - roleId: string
   - userId: string
-  - boardId: string
 
 ## Права
 

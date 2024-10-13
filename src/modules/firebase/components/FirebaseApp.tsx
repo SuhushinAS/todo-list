@@ -1,4 +1,4 @@
-import {deleteApp, FirebaseApp, initializeApp} from 'firebase/app';
+import {FirebaseApp, initializeApp} from 'firebase/app';
 import {config} from 'modules/firebase/model/constants';
 import React, {
   createContext,
@@ -14,8 +14,7 @@ type Props = {
 
 const FirebaseAppContext = createContext<FirebaseApp | undefined>(undefined);
 
-export const FirebaseAppProvider = (props: Props) => {
-  const {children} = props;
+export const FirebaseAppProvider = ({children}: Props) => {
   const [app, setApp] = useState<FirebaseApp>();
 
   useEffect(() => {
@@ -23,12 +22,12 @@ export const FirebaseAppProvider = (props: Props) => {
       setApp(initializeApp(config));
     }
 
-    return () => {
-      if (app !== undefined) {
-        deleteApp(app);
-        setApp(undefined);
-      }
-    };
+    // return () => {
+    //   if (app !== undefined) {
+    //     deleteApp(app);
+    //     setApp(undefined);
+    //   }
+    // };
   }, [app]);
 
   if (app === undefined) {

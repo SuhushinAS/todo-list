@@ -5,8 +5,7 @@ import {useFormContext} from 'react-hook-form';
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const ButtonSubmit = (props: Props) => {
-  const {className, disabled, ...restProps} = props;
+export const ButtonSubmit = ({className, disabled, ...props}: Props) => {
   const {formState} = useFormContext();
   const {isDirty, isLoading, isSubmitting, isValid, isValidating} = formState;
   const buttonClassName = useClassName('Button_Primary', className);
@@ -19,6 +18,6 @@ export const ButtonSubmit = (props: Props) => {
     disabled;
 
   return (
-    <Button className={buttonClassName} disabled={isDisabled} {...restProps} />
+    <Button className={buttonClassName} disabled={isDisabled} {...props} />
   );
 };
