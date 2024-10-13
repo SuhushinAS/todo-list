@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
+import {themeDark} from 'modules/theme/lib/constants';
 import {getThemeCurrent, getThemeDevice} from 'modules/theme/lib/helpers';
-import {themeDark} from 'modules/theme/model/constants';
-import {TThemeStore} from 'modules/theme/model/types';
+import {TThemeStore} from 'modules/theme/lib/types';
 
 const initialState: TThemeStore = {
   current: getThemeCurrent(),

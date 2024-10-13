@@ -1,6 +1,6 @@
 import {SvgIcon} from 'modules/common/components/SvgIcon';
 import 'modules/theme/components/ThemeSelector.less';
-import {TTheme, TThemeAuto, TThemeDevice} from 'modules/theme/model/types';
+import {TTheme, TThemeAuto, TThemeDevice} from 'modules/theme/lib/types';
 import React, {useMemo} from 'react';
 
 type Props = {

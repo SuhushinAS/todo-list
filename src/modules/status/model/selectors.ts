@@ -1,4 +1,4 @@
-import {TState} from 'app/model/types';
+import {TState} from 'app/lib/types';
 import {statusName} from 'modules/status/model/reducers';
 import {TStatusStore} from 'modules/status/model/types';
 

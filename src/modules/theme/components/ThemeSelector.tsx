@@ -6,9 +6,9 @@ import {
   useThemeCurrent,
   useThemeDevice,
 } from 'modules/theme/lib/hooks';
+import {TThemeAuto, TThemeDevice} from 'modules/theme/lib/types';
 import {useThemeCurrentSet} from 'modules/theme/model/actions';
 import {selectThemeCurrent} from 'modules/theme/model/selectors';
-import {TThemeAuto, TThemeDevice} from 'modules/theme/model/types';
 import React, {MouseEventHandler, useCallback} from 'react';
 
 const themeList = [TThemeAuto.auto, TThemeDevice.dark, TThemeDevice.light];

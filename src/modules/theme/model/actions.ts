@@ -1,5 +1,5 @@
 import {useAppDispatch} from 'app/lib/hooks';
-import {themeCurrentKey} from 'modules/theme/model/constants';
+import {themeCurrentKey} from 'modules/theme/lib/constants';
 import {themeActions} from 'modules/theme/model/reducers';
 import {useCallback} from 'react';
 

@@ -1,5 +1,5 @@
-import {themeCurrentKey, themeDefault} from 'modules/theme/model/constants';
-import {TTheme, TThemeDevice} from 'modules/theme/model/types';
+import {themeCurrentKey, themeDefault} from 'modules/theme/lib/constants';
+import {TTheme, TThemeDevice} from 'modules/theme/lib/types';
 
 export const getThemeCurrent = (): TTheme => {
   try {
@@ -21,6 +21,8 @@ export const getThemeCurrent = (): TTheme => {
   }
 };
 
-export const getThemeDevice = (themeDark: MediaQueryList | MediaQueryListEvent): TThemeDevice => {
+export const getThemeDevice = (
+  themeDark: MediaQueryList | MediaQueryListEvent
+): TThemeDevice => {
   return themeDark.matches ? TThemeDevice.dark : TThemeDevice.light;
 };

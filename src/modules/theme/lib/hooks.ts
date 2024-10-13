@@ -1,10 +1,10 @@
 import {useAppDispatch, useAppSelector} from 'app/lib/hooks';
+import {themeDark} from 'modules/theme/lib/constants';
 import {getThemeCurrent, getThemeDevice} from 'modules/theme/lib/helpers';
+import {TThemeDevice} from 'modules/theme/lib/types';
 import {useThemeCurrentSet} from 'modules/theme/model/actions';
-import {themeDark} from 'modules/theme/model/constants';
 import {themeActions} from 'modules/theme/model/reducers';
 import {selectTheme} from 'modules/theme/model/selectors';
-import {TThemeDevice} from 'modules/theme/model/types';
 import {useCallback, useEffect} from 'react';
 
 const {body} = document;

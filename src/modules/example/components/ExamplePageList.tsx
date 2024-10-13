@@ -1,4 +1,4 @@
-import {appPath} from 'app/model/constants';
+import {appPath} from 'app/lib/constants';
 import {ExampleHead} from 'modules/example/components/ExampleHead';
 import {ExampleList} from 'modules/example/components/ExampleList';
 import {Message} from 'modules/locale/components/Message';

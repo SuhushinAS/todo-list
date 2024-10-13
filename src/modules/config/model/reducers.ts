@@ -1,6 +1,5 @@
-import {createSlice} from '@reduxjs/toolkit';
-import {PayloadAction} from '@reduxjs/toolkit/dist/createAction';
-import type {TConfig} from 'modules/config/model/types';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import type {TConfig} from 'modules/config/lib/types';
 
 const initialState: TConfig = {
   host: '',

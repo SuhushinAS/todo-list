@@ -3,7 +3,7 @@ import {useAnonymouslyContext} from 'modules/firebase/components/Anonymously';
 import {useDocRef} from 'modules/firebase/model/useDocRef';
 import {Form} from 'modules/form/components/Form';
 import {AuthForm} from 'modules/user/components/AuthForm';
-import {TUser} from 'modules/user/types';
+import {TUser} from 'modules/user/lib/types';
 import React, {useCallback, useMemo} from 'react';
 import {DefaultValues, SubmitHandler} from 'react-hook-form';
 

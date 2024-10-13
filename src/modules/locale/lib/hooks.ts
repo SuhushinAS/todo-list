@@ -1,8 +1,8 @@
 import {useAppSelector} from 'app/lib/hooks';
 import {getLocaleCurrent, getMessage} from 'modules/locale/lib/helpers';
+import {TMessage} from 'modules/locale/lib/types';
 import {useLocaleSetCurrent} from 'modules/locale/model/actions';
 import {selectLocaleList} from 'modules/locale/model/selectors';
-import {TMessage} from 'modules/locale/model/types';
 import {useEffect, useMemo} from 'react';
 import {useIntl} from 'react-intl';
 

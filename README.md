@@ -70,7 +70,7 @@ npm run build
 
 ## Модель данных
 
-- todo
+- task
   - boardId: string
   - createdAt: Date
   - createdBy: string
@@ -104,7 +104,7 @@ npm run build
 
 ## Права
 
-- Todo
+- Task
   - Create
   - Read
   - Update

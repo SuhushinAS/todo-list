@@ -1,5 +1,5 @@
+import {appPath} from 'app/lib/constants';
 import {useAppSelector} from 'app/lib/hooks';
-import {appPath} from 'app/model/constants';
 import {ExampleHead} from 'modules/example/components/ExampleHead';
 import {ExampleItem} from 'modules/example/components/ExampleItem';
 import {selectExampleItem} from 'modules/example/model/selectors';

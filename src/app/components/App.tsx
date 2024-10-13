@@ -1,4 +1,4 @@
-import {appPath} from 'app/model/constants';
+import {appPath} from 'app/lib/constants';
 import {store} from 'app/model/store';
 import {Board} from 'modules/board/components/Board';
 import {Config} from 'modules/config/components/Config';

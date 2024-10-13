@@ -1,4 +1,4 @@
-import {TState} from 'app/model/types';
+import {TState} from 'app/lib/types';
 import {getList} from 'modules/common/lib/selectors';
 import {exampleName} from 'modules/example/model/reducers';
 import {

@@ -1,4 +1,4 @@
-import {appPath} from 'app/model/constants';
+import {appPath} from 'app/lib/constants';
 import {LocaleSelector} from 'modules/locale/components/LocaleSelector';
 import {Message} from 'modules/locale/components/Message';
 import {ThemeSelector} from 'modules/theme/components/ThemeSelector';

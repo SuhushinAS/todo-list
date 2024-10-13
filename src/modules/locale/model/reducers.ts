@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {localeDefault} from 'modules/locale/model/constants';
-import type {TLocaleStore} from 'modules/locale/model/types';
-import {TLocale} from 'modules/locale/model/types';
+import {localeDefault} from 'modules/locale/lib/constants';
+import type {TLocaleStore} from 'modules/locale/lib/types';
+import {TLocale} from 'modules/locale/lib/types';
 
 const initialState: TLocaleStore = {
   current: localeDefault,

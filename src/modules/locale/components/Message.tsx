@@ -1,5 +1,5 @@
 import {defaultMessage} from 'modules/locale/lib/helpers';
-import {TMessageProps, TMessageValues} from 'modules/locale/model/types';
+import {TMessageProps, TMessageValues} from 'modules/locale/lib/types';
 import React from 'react';
 import {FormattedMessage} from 'react-intl';
 

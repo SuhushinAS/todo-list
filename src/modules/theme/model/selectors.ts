@@ -1,12 +1,12 @@
 import {createSelector} from '@reduxjs/toolkit';
-import {TState} from 'app/model/types';
-import {theme} from 'modules/theme/model/reducers';
+import {TState} from 'app/lib/types';
 import {
   TTheme,
   TThemeAuto,
   TThemeDevice,
   TThemeStore,
-} from 'modules/theme/model/types';
+} from 'modules/theme/lib/types';
+import {theme} from 'modules/theme/model/reducers';
 
 export const selectThemeState = (state: TState): TThemeStore =>
   state[theme.name];

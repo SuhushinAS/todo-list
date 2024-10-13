@@ -1,4 +1,4 @@
-import {TThemeAuto} from 'modules/theme/model/types';
+import {TThemeAuto} from 'modules/theme/lib/types';
 
 export const themeDefault = TThemeAuto.auto;
 export const themeCurrentKey = 'themeCurrent';

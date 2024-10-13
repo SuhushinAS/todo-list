@@ -1,4 +1,4 @@
-import {TState} from 'app/model/types';
+import {TState} from 'app/lib/types';
 import {configName} from 'modules/config/model/reducers';
 
 export const selectConfig = (state: TState) => {

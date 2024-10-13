@@ -1,4 +1,4 @@
-import {localeCurrentKey, localeDefault} from 'modules/locale/model/constants';
+import {localeCurrentKey, localeDefault} from 'modules/locale/lib/constants';
 import {IntlShape} from 'react-intl';
 
 export const defaultMessage = '\u00A0';
