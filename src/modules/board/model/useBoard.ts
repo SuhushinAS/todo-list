@@ -1,7 +1,8 @@
 import {onSnapshot} from 'firebase/firestore';
-import {TBoard, WithId} from 'modules/board/lib/types';
+import {TBoard} from 'modules/board/lib/types';
 import {getData} from 'modules/firebase/lib/getData';
 import {hasData} from 'modules/firebase/lib/hasData';
+import {WithId} from 'modules/firebase/lib/types';
 import {useDocRef} from 'modules/firebase/model/useDocRef';
 import {useEffect, useState} from 'react';
 

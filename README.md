@@ -58,49 +58,74 @@ npm run build
 ## Сценарии
 
 - Пользователь
-  - [ ] Редактировать персоняльные данные
+  - [ ] Редактировать персональные данные
+  - [ ] Создават свои доски
 - Наблюдатель
-  - [ ] Посмотреть список дел в бэклоге
-  - [ ] Посмотреть спсиок дел в работе
-  - [ ] Посмотреть список выполненных дел
+  - [x] Посмотреть список досок
+  - [ ] Посмотреть список задач в бэклоге
+  - [ ] Посмотреть спсиок задач в работе
+  - [ ] Посмотреть список выполненных задач
 - Админ
   - [ ] Наблюдатель
-  - [ ] Менят статус дел
-  - [ ] Создавать/редактировать/удалять дела
+  - [ ] Менят статус задач
+  - [ ] Создавать/редактировать/удалять задачи
 
 ## Модель данных
 
-- task
-  - boardId: string
-  - createdAt: Date
-  - createdBy: string
-  - id: string
-  - priority: Low/High
-  - status: Todo/Active/Done
-  - title: string
-  - updatedAt: Date
-  - updatedBy: string
-- board
-  - createdAt: Date
-  - createdBy: string
-  - id: string
-  - title: string
-  - updatedAt: Date
-  - updatedBy: string
-- user
-  - id: string
-  - name: string
-- permission
-  - id: string
-  - name: string
-- role
-  - id: string
-  - name: string
-  - permissionIds: string[]
-- boardUserMap
-  - boardId: string
-  - roleId: string
-  - userId: string
+```typescript
+export type TTask = {
+  boardId: string;
+  createdAt: Timestamp;
+  createdBy: string;
+  id: string;
+  priority: 'high' | 'low';
+  status: 'active' | 'aone' | 'todo';
+  title: string;
+  updatedAt: Timestamp;
+  updatedBy: string;
+};
+```
+
+```typescript
+export type TBoard = {
+  createdAt: Timestamp;
+  createdBy: string;
+  id: string;
+  title: string;
+  updatedAt: Timestamp;
+  updatedBy: string;
+};
+```
+
+```typescript
+export type TUser = {
+  id: string;
+  name: string;
+};
+```
+
+```typescript
+export type TPermission = {
+  id: string;
+  name: string;
+};
+```
+
+```typescript
+export type TRole = {
+  id: string;
+  name: string;
+  permissionIds: string[]
+};
+```
+
+```typescript
+export type TBoardUserMap = {
+  boardId: string;
+  roleId: string;
+  userId: string;
+};
+```
 
 ## Права
 

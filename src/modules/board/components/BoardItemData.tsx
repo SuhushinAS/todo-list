@@ -1,4 +1,6 @@
-import {TBoard, WithId} from 'modules/board/lib/types';
+import {TBoard} from 'modules/board/lib/types';
+import {WithId} from 'modules/firebase/lib/types';
+import {Tasks} from 'modules/task/components/Tasks';
 import React from 'react';
 
 type Props = {
@@ -6,11 +8,10 @@ type Props = {
 };
 
 export const BoardItemData = ({board}: Props) => {
-  console.log(board);
-
   return (
     <div>
       <h2>{board.title}</h2>
+      <Tasks boardId={board.id} />
     </div>
   );
 };

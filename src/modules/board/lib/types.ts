@@ -8,10 +8,6 @@ export type TBoard = {
   updatedBy: string;
 };
 
-export type WithId<T> = T & {
-  id: string;
-};
-
 export type TBoardUserMap = {
   boardId: string;
   roleId: string;

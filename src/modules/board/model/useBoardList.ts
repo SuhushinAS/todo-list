@@ -6,11 +6,12 @@ import {
   query,
   where,
 } from 'firebase/firestore';
-import {TBoard, WithId} from 'modules/board/lib/types';
+import {TBoard} from 'modules/board/lib/types';
 import {useBoardUserMapList} from 'modules/board/model/useBoardUserMapList';
 import {useFirestoreContext} from 'modules/firebase/components/Firestore';
 import {getData} from 'modules/firebase/lib/getData';
 import {hasData} from 'modules/firebase/lib/hasData';
+import {WithId} from 'modules/firebase/lib/types';
 import {useEffect, useState} from 'react';
 
 export const useBoardList = (userId: string) => {
@@ -37,9 +38,9 @@ export const useBoardList = (userId: string) => {
     );
 
     return onSnapshot<TBoard, TBoard>(queryConstraint, (snap) => {
-      const boardListNew = snap.docs.filter(hasData).map(getData);
+      const boardList = snap.docs.filter(hasData).map(getData);
 
-      setBoardList(boardListNew);
+      setBoardList(boardList);
     });
   }, [boardUserMapList, firestore]);
 

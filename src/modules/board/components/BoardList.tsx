@@ -1,6 +1,7 @@
 import {BoardListItem} from 'modules/board/components/BoardListItem';
-import {TBoard, WithId} from 'modules/board/lib/types';
+import {TBoard} from 'modules/board/lib/types';
 import {Table} from 'modules/common/components/Table';
+import {WithId} from 'modules/firebase/lib/types';
 import React from 'react';
 
 type Props = {
