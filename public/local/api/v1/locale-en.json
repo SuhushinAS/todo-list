@@ -8,6 +8,9 @@
   "form.save": "Save",
   "home.description": "Home description",
   "home.title": "Home",
+  "task.empty.description": "Create any task to start planning",
+  "task.empty.title": "Tasks are not found",
+  "task.title": "Tasks title",
   "user.name": "Your name",
   "user.status.offline": "Offline",
   "user.status.online": "Online"

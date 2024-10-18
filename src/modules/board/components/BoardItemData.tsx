@@ -5,13 +5,14 @@ import React from 'react';
 
 type Props = {
   board: WithId<TBoard>;
+  userId: string;
 };
 
-export const BoardItemData = ({board}: Props) => {
+export const BoardItemData = ({board, userId}: Props) => {
   return (
-    <div>
+    <div className="box">
       <h2>{board.title}</h2>
-      <Tasks boardId={board.id} />
+      <Tasks boardId={board.id} userId={userId} />
     </div>
   );
 };

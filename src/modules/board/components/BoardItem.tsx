@@ -4,7 +4,11 @@ import {useBoard} from 'modules/board/model/useBoard';
 import React from 'react';
 import {Navigate, useParams} from 'react-router-dom';
 
-export const BoardItem = () => {
+type Props = {
+  userId: string;
+};
+
+export const BoardItem = ({userId}: Props) => {
   const {boardId = ''} = useParams<{boardId: string}>();
   const board = useBoard(boardId);
 
@@ -16,5 +20,5 @@ export const BoardItem = () => {
     return <Navigate to={boardPath.home} />;
   }
 
-  return <BoardItemData board={board} />;
+  return <BoardItemData board={board} userId={userId} />;
 };

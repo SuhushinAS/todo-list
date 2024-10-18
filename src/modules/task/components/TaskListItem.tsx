@@ -1,14 +1,12 @@
+import {TaskListItemBase} from 'modules/task/components/TaskListItemBase';
 import {TTask} from 'modules/task/lib/types';
 import React from 'react';
 
 type Props = {
+  index: number;
   task: TTask;
 };
 
-export const TaskListItem = ({task}: Props) => {
-  return (
-    <tr>
-      <td className="Table__Cell">{task.title}</td>
-    </tr>
-  );
+export const TaskListItem = ({index, task}: Props) => {
+  return <TaskListItemBase index={index} task={task} />;
 };
