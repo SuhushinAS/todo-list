@@ -1,4 +1,5 @@
 import {useAppSelector} from 'app/lib/hooks';
+import {useGetNextItem} from 'modules/common/lib/useGetNextItem';
 import 'modules/theme/components/ThemeSelector.less';
 import {ThemeSelectorIcon} from 'modules/theme/components/ThemeSelectorIcon';
 import {
@@ -13,21 +14,16 @@ import React, {MouseEventHandler, useCallback} from 'react';
 
 const themeList = [TThemeAuto.auto, TThemeDevice.dark, TThemeDevice.light];
 
-const themeNumMap = Object.fromEntries(
-  themeList.map((value, index) => [value, index])
-);
-
 export const ThemeSelector = () => {
   const themeCurrent = useAppSelector(selectThemeCurrent);
   const themeCurrentSet = useThemeCurrentSet();
+  const getNextItem = useGetNextItem(themeList);
 
   const onClick = useCallback<MouseEventHandler<HTMLButtonElement>>(() => {
-    const themeCurrentNum = themeNumMap[themeCurrent];
-    const themeNextNum = (themeCurrentNum + 1) % themeList.length;
-    const themeNext = themeList[themeNextNum];
+    const themeNext = getNextItem(themeCurrent);
 
     themeCurrentSet(themeNext);
-  }, [themeCurrent, themeCurrentSet]);
+  }, [getNextItem, themeCurrent, themeCurrentSet]);
 
   useThemeCurrent();
 

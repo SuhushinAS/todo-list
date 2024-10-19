@@ -1,5 +1,7 @@
 import {useAppSelector} from 'app/lib/hooks';
+import {useGetNextItem} from 'modules/common/lib/useGetNextItem';
 import 'modules/locale/components/LocaleSelector.less';
+import {LocaleSelectorIcon} from 'modules/locale/components/LocaleSelectorIcon';
 import {
   useLocaleGetMessages,
   useLocaleSetCurrent,
@@ -24,6 +26,13 @@ export const LocaleSelector = () => {
   const [locale, setLocale] = useState(localeCurrent);
   const localeSetCurrent = useLocaleSetCurrent();
   const localeGetMessages = useLocaleGetMessages();
+  const getNextItem = useGetNextItem(localeList);
+
+  const onLocaleNext = useCallback(() => {
+    const localeNext = getNextItem(locale);
+
+    setLocale(localeNext);
+  }, [getNextItem, locale]);
 
   const onLocaleChange = useCallback(
     (event: ChangeEvent<HTMLSelectElement>) => {
@@ -41,14 +50,18 @@ export const LocaleSelector = () => {
   }, [locale, localeCurrent, localeData, localeGetMessages, localeSetCurrent]);
 
   return (
-    <select
-      className="LocaleSelector"
-      name="locale"
-      onBlur={onLocaleChange}
-      onChange={onLocaleChange}
-      value={locale}
-    >
-      {localeList.map(renderLocaleOption)}
-    </select>
+    <button className="LocaleSelector" onClick={onLocaleNext} type="button">
+      <div className="LocaleSelector__IconWrapper">
+        {localeList.map((localeItem) => {
+          return (
+            <LocaleSelectorIcon
+              isCurrent={localeItem === locale}
+              key={localeItem}
+              locale={localeItem}
+            />
+          );
+        })}
+      </div>
+    </button>
   );
 };
