@@ -9,12 +9,14 @@ import {DefaultValues, SubmitHandler} from 'react-hook-form';
 
 export const Auth = () => {
   const anonymously = useAnonymouslyContext();
-  const userDocRef = useDocRef('user', anonymously.uid);
-  const defaultValues = useMemo<DefaultValues<TUser>>(() => ({name: ''}), []);
+  const userDocRef = useDocRef<TUser>('user', anonymously.uid);
+  const defaultValues = useMemo<DefaultValues<TUser>>(() => {
+    return {name: ''};
+  }, []);
 
   const onSubmit = useCallback<SubmitHandler<TUser>>(
     (values) => {
-      return setDoc<TUser>(userDocRef, values);
+      return setDoc(userDocRef, values);
     },
     [userDocRef]
   );

@@ -22,7 +22,7 @@ export const TaskCreate = ({boardId, userId}: Props) => {
     };
   }, [boardId, userId]);
 
-  const taskCollectionRef = useCollectionRef('task');
+  const taskCollectionRef = useCollectionRef<TTask>('task');
   const onSubmit = useCallback<SubmitHandler<TTask>>(
     (values) => {
       return addDoc(taskCollectionRef, values);

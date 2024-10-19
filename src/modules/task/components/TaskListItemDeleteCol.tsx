@@ -4,6 +4,7 @@ import {useDocRef} from 'modules/firebase/model/useDocRef';
 import {Button} from 'modules/form/components/Button';
 import {Permission} from 'modules/permission/components/Permission';
 import {TPermission} from 'modules/permission/lib/types';
+import {TTask} from 'modules/task/lib/types';
 import React, {useCallback} from 'react';
 
 type Props = {
@@ -11,7 +12,7 @@ type Props = {
 };
 
 export const TaskListItemDeleteCol = ({taskId}: Props) => {
-  const taskDocRef = useDocRef('task', taskId);
+  const taskDocRef = useDocRef<TTask>('task', taskId);
 
   const onTaskDelete = useCallback(() => {
     return deleteDoc(taskDocRef);

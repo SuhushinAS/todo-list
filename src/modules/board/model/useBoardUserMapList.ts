@@ -15,9 +15,7 @@ export const useBoardUserMapList = (props: Props) => {
     return Object.entries(props).map(([key, value]) => where(key, '==', value));
   }, [props]);
 
-  const collectionRef = useCollectionRef<TBoardUserMap, TBoardUserMap>(
-    'boardUserMap'
-  );
+  const collectionRef = useCollectionRef<TBoardUserMap>('boardUserMap');
 
   const queryConstraint = useMemo(() => {
     return query(collectionRef, ...constraints);

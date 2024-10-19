@@ -8,7 +8,7 @@ import {useCallback, useEffect, useState} from 'react';
 
 export const useBoard = (boardId: string) => {
   const [board, setBoard] = useState<WithId<TBoard> | null>();
-  const boardDocRef = useDocRef<TBoard, TBoard>('board', boardId);
+  const boardDocRef = useDocRef<TBoard>('board', boardId);
 
   const onSnapshotNext = useCallback(
     (snap: DocumentSnapshot<TBoard, TBoard>) => {

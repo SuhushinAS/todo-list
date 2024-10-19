@@ -8,7 +8,7 @@ import {useEffect, useState} from 'react';
 
 export const useTask = (taskId: string) => {
   const [task, setTask] = useState<WithId<TTask> | null>();
-  const taskDocRef = useDocRef<TTask, TTask>('task', taskId);
+  const taskDocRef = useDocRef<TTask>('task', taskId);
 
   useEffect(() => {
     return onSnapshot<TTask, TTask>(taskDocRef, (snap) => {

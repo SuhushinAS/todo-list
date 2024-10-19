@@ -1,14 +1,12 @@
-import {DocumentData, Query, query, QueryConstraint} from 'firebase/firestore';
+import {Query, query, QueryConstraint} from 'firebase/firestore';
+import {DD} from 'modules/firebase/lib/types';
 import {useMemo} from 'react';
 
-export const useQueryConstraint = <
-  AppModelType = DocumentData,
-  DbModelType extends DocumentData = DocumentData,
->(
+export const useQueryConstraint = <A = DD, D extends DD = A>(
   q: Query,
   constraint: QueryConstraint
 ) => {
   return useMemo(() => {
-    return query<AppModelType, DbModelType>(q, constraint);
+    return query<A, D>(q, constraint);
   }, [q, constraint]);
 };

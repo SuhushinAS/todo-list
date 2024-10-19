@@ -1,6 +1,7 @@
-import {DocumentData, DocumentSnapshot} from 'firebase/firestore';
+import {DocumentSnapshot} from 'firebase/firestore';
+import {DD} from 'modules/firebase/lib/types';
 
-export const hasData = <A, D extends DocumentData>(
+export const hasData = <A, D extends DD>(
   snap: DocumentSnapshot<A, D>
 ): boolean => {
   return snap.exists();

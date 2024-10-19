@@ -30,6 +30,16 @@ export const TaskListItemBase = (props: Props) => {
           {task.title}
         </p>
       </td>
+      <td className="TaskListItem__Cell Table__Cell" onClick={onClick}>
+        <p className="TaskListItem__Title" title={task.priority}>
+          {task.priority}
+        </p>
+      </td>
+      <td className="TaskListItem__Cell Table__Cell" onClick={onClick}>
+        <p className="TaskListItem__Title" title={task.status}>
+          {task.status}
+        </p>
+      </td>
       {action}
     </tr>
   );

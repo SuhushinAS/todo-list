@@ -12,20 +12,18 @@ export const useTaskList = (boardId: string) => {
   const queryConstraint = useMemo(() => {
     return where('boardId', '==', boardId);
   }, [boardId]);
-  const q = useQueryConstraint<TTask, TTask>(
-    useCollectionRef('task'),
+  const q = useQueryConstraint<TTask>(
+    useCollectionRef<TTask>('task'),
     queryConstraint
   );
 
-  useEffect(
-    () =>
-      onSnapshot<TTask, TTask>(q, (snap) => {
-        const taskList = snap.docs.filter(hasData).map(getData);
+  useEffect(() => {
+    return onSnapshot<TTask, TTask>(q, (snap) => {
+      const taskList = snap.docs.filter(hasData).map(getData);
 
-        setTaskList(taskList);
-      }),
-    [q]
-  );
+      setTaskList(taskList);
+    });
+  }, [q]);
 
   return taskList;
 };

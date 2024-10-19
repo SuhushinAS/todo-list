@@ -1,7 +1,7 @@
-import {DocumentData, DocumentSnapshot} from 'firebase/firestore';
-import {WithId} from 'modules/firebase/lib/types';
+import {DocumentSnapshot} from 'firebase/firestore';
+import {DD, WithId} from 'modules/firebase/lib/types';
 
-export const getData = <A, D extends DocumentData>(
+export const getData = <A, D extends DD>(
   snap: DocumentSnapshot<A, D>
 ): WithId<A> => {
   return {
