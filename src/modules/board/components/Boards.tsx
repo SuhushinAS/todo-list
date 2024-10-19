@@ -9,5 +9,9 @@ type Props = {
 export const Boards = ({userId}: Props) => {
   const boardList = useBoardList(userId);
 
-  return <BoardList boardList={boardList} />;
+  return (
+    <div className="box">
+      <BoardList boardList={boardList} />
+    </div>
+  );
 };

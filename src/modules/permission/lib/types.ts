@@ -1,10 +1,10 @@
-export enum TPermissionType {
+export enum TPermission {
   BoardCreate = 'Board.Create',
   BoardDelete = 'Board.Delete',
   BoardRead = 'Board.Read',
   BoardUpdate = 'Board.Update',
-  TodoCreate = 'Todo.Create',
-  TodoDelete = 'Todo.Delete',
-  TodoRead = 'Todo.Read',
-  TodoUpdate = 'Todo.Update',
+  TaskCreate = 'Task.Create',
+  TaskDelete = 'Task.Delete',
+  TaskRead = 'Task.Read',
+  TaskUpdate = 'Task.Update',
 }

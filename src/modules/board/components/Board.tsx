@@ -1,4 +1,4 @@
-import {BoardItem} from 'modules/board/components/BoardItem';
+import {BoardItemPermission} from 'modules/board/components/BoardItemPermission';
 import {Boards} from 'modules/board/components/Boards';
 import {boardPath} from 'modules/board/lib/constants';
 import {Auth} from 'modules/user/components/Auth';
@@ -21,7 +21,10 @@ export const Board = () => {
 
   return (
     <Routes>
-      <Route element={<BoardItem userId={user.id} />} path={boardPath.item} />
+      <Route
+        element={<BoardItemPermission userId={user.id} />}
+        path={boardPath.item}
+      />
       <Route
         element={<Boards userId={user.id} />}
         path={`${boardPath.home}*`}

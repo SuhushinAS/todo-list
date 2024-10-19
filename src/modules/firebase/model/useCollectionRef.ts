@@ -1,5 +1,8 @@
-import {CollectionReference, DocumentData} from '@firebase/firestore';
-import {collection} from 'firebase/firestore';
+import {
+  collection,
+  CollectionReference,
+  DocumentData,
+} from 'firebase/firestore';
 import {useFirestoreContext} from 'modules/firebase/components/Firestore';
 import {useMemo} from 'react';
 

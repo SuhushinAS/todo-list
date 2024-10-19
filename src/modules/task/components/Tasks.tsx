@@ -1,3 +1,5 @@
+import {Permission} from 'modules/permission/components/Permission';
+import {TPermission} from 'modules/permission/lib/types';
 import {TaskCreate} from 'modules/task/components/TaskCreate';
 import {TaskList} from 'modules/task/components/TaskList';
 import {useTaskList} from 'modules/task/model/useTaskList';
@@ -14,7 +16,9 @@ export const Tasks = ({boardId, userId}: Props) => {
   return (
     <div>
       <TaskList taskList={taskList} />
-      <TaskCreate boardId={boardId} userId={userId} />
+      <Permission permission={TPermission.TaskCreate}>
+        <TaskCreate boardId={boardId} userId={userId} />
+      </Permission>
     </div>
   );
 };

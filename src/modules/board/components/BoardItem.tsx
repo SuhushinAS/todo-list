@@ -2,14 +2,14 @@ import {BoardItemData} from 'modules/board/components/BoardItemData';
 import {boardPath} from 'modules/board/lib/constants';
 import {useBoard} from 'modules/board/model/useBoard';
 import React from 'react';
-import {Navigate, useParams} from 'react-router-dom';
+import {Navigate} from 'react-router-dom';
 
 type Props = {
+  boardId: string;
   userId: string;
 };
 
-export const BoardItem = ({userId}: Props) => {
-  const {boardId = ''} = useParams<{boardId: string}>();
+export const BoardItem = ({boardId, userId}: Props) => {
   const board = useBoard(boardId);
 
   if (board === undefined) {

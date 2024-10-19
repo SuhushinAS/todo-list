@@ -1,5 +1,4 @@
-import {DocumentData, Query, QueryConstraint} from '@firebase/firestore';
-import {query} from 'firebase/firestore';
+import {DocumentData, Query, query, QueryConstraint} from 'firebase/firestore';
 import {useMemo} from 'react';
 
 export const useQueryConstraint = <

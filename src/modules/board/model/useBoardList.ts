@@ -1,6 +1,6 @@
-import {CollectionReference} from '@firebase/firestore';
 import {
   collection,
+  CollectionReference,
   documentId,
   onSnapshot,
   query,
@@ -12,11 +12,12 @@ import {useFirestoreContext} from 'modules/firebase/components/Firestore';
 import {getData} from 'modules/firebase/lib/getData';
 import {hasData} from 'modules/firebase/lib/hasData';
 import {WithId} from 'modules/firebase/lib/types';
-import {useEffect, useState} from 'react';
+import {useEffect, useMemo, useState} from 'react';
 
 export const useBoardList = (userId: string) => {
   const [boardList, setBoardList] = useState<WithId<TBoard>[]>();
-  const boardUserMapList = useBoardUserMapList(userId);
+  const props = useMemo(() => ({userId}), [userId]);
+  const boardUserMapList = useBoardUserMapList(props);
   const firestore = useFirestoreContext();
 
   useEffect(() => {
@@ -28,8 +29,8 @@ export const useBoardList = (userId: string) => {
       firestore,
       'board'
     ) as CollectionReference<TBoard, TBoard>;
-    const boardIdList = boardUserMapList.map((boardUserMap) => {
-      return boardUserMap.boardId;
+    const boardIdList = boardUserMapList.map(({boardId}) => {
+      return boardId;
     });
     const constraint = where(documentId(), 'in', boardIdList);
     const queryConstraint = query<TBoard, TBoard>(

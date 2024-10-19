@@ -1,4 +1,5 @@
 import {noop, Noop} from 'modules/common/lib/noop';
+import {WithId} from 'modules/firebase/lib/types';
 import 'modules/task/components/TaskListItem.less';
 import {TTask} from 'modules/task/lib/types';
 import React, {ReactNode} from 'react';
@@ -7,7 +8,7 @@ type Props = {
   action?: ReactNode;
   index: number;
   onClick?: Noop;
-  task: TTask;
+  task: WithId<TTask>;
 };
 
 export const TaskListItemBase = (props: Props) => {

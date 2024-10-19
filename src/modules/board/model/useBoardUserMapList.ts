@@ -1,28 +1,45 @@
-import {onSnapshot, where} from 'firebase/firestore';
+import {onSnapshot, query, QuerySnapshot, where} from 'firebase/firestore';
 import {TBoardUserMap} from 'modules/board/lib/types';
 import {useCollectionRef} from 'modules/firebase/model/useCollectionRef';
-import {useQueryConstraint} from 'modules/firebase/model/useQueryConstraint';
-import {useEffect, useMemo, useState} from 'react';
+import {useCallback, useEffect, useMemo, useState} from 'react';
 
-export const useBoardUserMapList = (userId: string) => {
+type Props = {
+  boardId?: string;
+  userId?: string;
+};
+
+export const useBoardUserMapList = (props: Props) => {
   const [boardUserMap, setBoardUserMap] = useState<TBoardUserMap[]>();
-  const constraint = useMemo(() => {
-    return where('userId', '==', userId);
-  }, [userId]);
-  const queryConstraint = useQueryConstraint(
-    useCollectionRef('boardUserMap'),
-    constraint
+
+  const constraints = useMemo(() => {
+    return Object.entries(props).map(([key, value]) => where(key, '==', value));
+  }, [props]);
+
+  const collectionRef = useCollectionRef<TBoardUserMap, TBoardUserMap>(
+    'boardUserMap'
   );
 
-  useEffect(() => {
-    return onSnapshot(queryConstraint, (snap) => {
+  const queryConstraint = useMemo(() => {
+    return query(collectionRef, ...constraints);
+  }, [collectionRef, constraints]);
+
+  const onSnapshotNext = useCallback(
+    (snap: QuerySnapshot<TBoardUserMap, TBoardUserMap>) => {
       const boardUserMapNew = snap.docs.map((doc) => {
-        return doc.data() as TBoardUserMap;
+        return doc.data();
       });
 
       setBoardUserMap(boardUserMapNew);
-    });
-  }, [queryConstraint]);
+    },
+    []
+  );
+
+  useEffect(() => {
+    return onSnapshot<TBoardUserMap, TBoardUserMap>(
+      queryConstraint,
+      onSnapshotNext
+    );
+  }, [onSnapshotNext, queryConstraint]);
 
   return boardUserMap;
 };
