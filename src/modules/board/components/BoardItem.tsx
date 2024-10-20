@@ -1,8 +1,9 @@
+import {appPath} from 'app/lib/constants';
 import {BoardItemData} from 'modules/board/components/BoardItemData';
-import {boardPath} from 'modules/board/lib/constants';
+import {boardItem, boardPath} from 'modules/board/lib/constants';
 import {useBoard} from 'modules/board/model/useBoard';
 import React from 'react';
-import {Navigate} from 'react-router-dom';
+import {generatePath, Navigate, Route, Routes} from 'react-router-dom';
 
 type Props = {
   boardId: string;
@@ -20,5 +21,20 @@ export const BoardItem = ({boardId, userId}: Props) => {
     return <Navigate to={boardPath.home} />;
   }
 
-  return <BoardItemData board={board} userId={userId} />;
+  return (
+    <Routes>
+      <Route
+        element={<BoardItemData board={board} userId={userId} />}
+        path={`${boardItem.edit}/*`}
+      />
+      <Route
+        element={
+          <Navigate
+            to={`${appPath.boards}${generatePath(boardPath.item, {boardId})}${boardItem.edit}`}
+          />
+        }
+        path="*"
+      />
+    </Routes>
+  );
 };

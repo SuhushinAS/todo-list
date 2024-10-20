@@ -23,7 +23,7 @@ export const Board = () => {
     <Routes>
       <Route
         element={<BoardItemPermission userId={user.id} />}
-        path={boardPath.item}
+        path={`${boardPath.item}/*`}
       />
       <Route
         element={<Boards userId={user.id} />}

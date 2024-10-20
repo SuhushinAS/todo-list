@@ -1,4 +1,4 @@
-import {getClassName} from 'modules/common/lib/getClassName';
+import clsx from 'clsx';
 import React, {PureComponent} from 'react';
 import './SvgIcon.less';
 
@@ -82,7 +82,7 @@ export class SvgIcon extends PureComponent<Props, State> {
     if (symbol) {
       return (
         <svg
-          className={getClassName('SvgIcon', this.props.className)}
+          className={clsx('SvgIcon', this.props.className)}
           viewBox={viewBox}
         >
           <use xlinkHref={symbol} />

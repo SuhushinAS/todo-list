@@ -7,7 +7,7 @@ import {Layout} from 'modules/layout/components/Layout';
 import {LocaleProvider} from 'modules/locale/components/LocaleProvider';
 import React from 'react';
 import {Provider} from 'react-redux';
-import {HashRouter, Route, Routes} from 'react-router-dom';
+import {HashRouter, Navigate, Route, Routes} from 'react-router-dom';
 
 export const App = () => {
   return (
@@ -19,7 +19,11 @@ export const App = () => {
               <Layout>
                 <FirebaseProvider>
                   <Routes>
-                    <Route element={<Board />} path={`${appPath.home}*`} />
+                    <Route element={<Board />} path={`${appPath.boards}/*`} />
+                    <Route
+                      element={<Navigate to={appPath.boards} />}
+                      path="*"
+                    />
                   </Routes>
                 </FirebaseProvider>
               </Layout>

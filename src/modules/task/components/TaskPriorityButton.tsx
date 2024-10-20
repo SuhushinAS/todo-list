@@ -1,4 +1,4 @@
-import {updateDoc} from 'firebase/firestore';
+import {serverTimestamp, updateDoc} from 'firebase/firestore';
 import {useGetNextItem} from 'modules/common/lib/useGetNextItem';
 import {useDocRef} from 'modules/firebase/model/useDocRef';
 import {Button} from 'modules/form/components/Button';
@@ -21,7 +21,10 @@ export const TaskPriorityButton = ({children, priority, taskId}: Props) => {
   const onClick = useCallback(() => {
     const nextPriority = getNextItem(priority);
 
-    return updateDoc(taskDocRef, {priority: nextPriority});
+    return updateDoc(taskDocRef, {
+      priority: nextPriority,
+      updatedAt: serverTimestamp(),
+    });
   }, [getNextItem, priority, taskDocRef]);
 
   return (

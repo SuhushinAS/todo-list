@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import {SvgIcon} from 'modules/common/components/SvgIcon';
 import 'modules/theme/components/ThemeSelectorIcon.less';
 import {TTheme, TThemeAuto, TThemeDevice} from 'modules/theme/lib/types';
@@ -16,13 +17,10 @@ const themeIconMap = {
 
 export const ThemeSelectorIcon = ({isCurrent, theme}: Props) => {
   const className = useMemo(() => {
-    const classList = ['ThemeSelectorIcon'];
-
-    if (isCurrent) {
-      classList.push('ThemeSelectorIcon_Current');
-    }
-
-    return classList.join(' ');
+    return clsx({
+      ThemeSelectorIcon: true,
+      ThemeSelectorIcon_Current: isCurrent,
+    });
   }, [isCurrent]);
 
   return <SvgIcon className={className} name={themeIconMap[theme]} />;

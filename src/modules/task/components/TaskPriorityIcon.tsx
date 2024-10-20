@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import {SvgIcon} from 'modules/common/components/SvgIcon';
 import 'modules/task/components/TaskPriorityIcon.less';
 import {TTaskPriority} from 'modules/task/lib/types';
@@ -15,13 +16,10 @@ const priorityIconMap = {
 
 export const TaskPriorityIcon = ({isCurrent, priority}: Props) => {
   const className = useMemo(() => {
-    const classList = ['TaskPriorityIcon'];
-
-    if (isCurrent) {
-      classList.push('TaskPriorityIcon_Current');
-    }
-
-    return classList.join(' ');
+    return clsx({
+      TaskPriorityIcon: true,
+      TaskPriorityIcon_Current: isCurrent,
+    });
   }, [isCurrent]);
 
   return <SvgIcon className={className} name={priorityIconMap[priority]} />;

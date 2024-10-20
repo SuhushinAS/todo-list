@@ -1,4 +1,4 @@
-import {useClassName} from 'modules/common/lib/useClassName';
+import clsx from 'clsx';
 import React, {ReactNode, SelectHTMLAttributes} from 'react';
 import {useController, useFormContext} from 'react-hook-form';
 import './Select.less';
@@ -16,7 +16,7 @@ type Props = SelectHTMLAttributes<HTMLSelectElement> & {
 export const Select = ({className, id, name, options, ...props}: Props) => {
   const {control} = useFormContext();
   const {field} = useController({control, name});
-  const selectClassName = useClassName('Select', className);
+  const selectClassName = clsx('Select', className);
 
   return (
     <select className={selectClassName} id={id ?? name} {...field} {...props}>
