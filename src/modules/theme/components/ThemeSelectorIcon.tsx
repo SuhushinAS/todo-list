@@ -1,5 +1,5 @@
 import {SvgIcon} from 'modules/common/components/SvgIcon';
-import 'modules/theme/components/ThemeSelector.less';
+import 'modules/theme/components/ThemeSelectorIcon.less';
 import {TTheme, TThemeAuto, TThemeDevice} from 'modules/theme/lib/types';
 import React, {useMemo} from 'react';
 
@@ -16,10 +16,10 @@ const themeIconMap = {
 
 export const ThemeSelectorIcon = ({isCurrent, theme}: Props) => {
   const className = useMemo(() => {
-    const classList = ['ThemeSelector__Icon'];
+    const classList = ['ThemeSelectorIcon'];
 
     if (isCurrent) {
-      classList.push('ThemeSelector__Icon_Current');
+      classList.push('ThemeSelectorIcon_Current');
     }
 
     return classList.join(' ');

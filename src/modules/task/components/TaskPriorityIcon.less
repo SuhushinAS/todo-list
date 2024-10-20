@@ -1,0 +1,21 @@
+@import (reference) 'src/styles/font';
+@import (reference) 'src/styles/mixins';
+
+.TaskPriorityIcon {
+  bottom: 0;
+  height: 1em;
+  left: 0;
+  margin: auto;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: scale(0.5);
+  transition: opacity @animation, transform @animation;
+  width: 1em;
+
+  &_Current {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

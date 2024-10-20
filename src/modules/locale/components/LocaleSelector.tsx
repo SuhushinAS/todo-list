@@ -11,7 +11,7 @@ import {
   selectLocaleData,
   selectLocaleList,
 } from 'modules/locale/model/selectors';
-import React, {ChangeEvent, useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 
 const renderLocaleOption = (locale: string) => (
   <option key={locale} value={locale}>
@@ -33,13 +33,6 @@ export const LocaleSelector = () => {
 
     setLocale(localeNext);
   }, [getNextItem, locale]);
-
-  const onLocaleChange = useCallback(
-    (event: ChangeEvent<HTMLSelectElement>) => {
-      setLocale(event.target.value);
-    },
-    []
-  );
 
   useEffect(() => {
     if (!localeData[locale]) {
